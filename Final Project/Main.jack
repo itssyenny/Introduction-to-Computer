@@ -1,0 +1,504 @@
+class Main {
+
+    /** Initializes a new game and starts it. */    
+    function void main() {
+        var StarWarGame NewGame;
+        var StarGame Game;
+		var int x,y;
+		var int ax,ay;
+		var char key;
+		var int level;
+		var int level2;
+		let level = 0;
+		let level2 = 0;
+		
+		do Screen.clearScreen();
+		do Screen.setColor(true);
+		
+	
+		do Screen.drawRectangle(155,10,290,20); //atas
+		do Screen.drawRectangle(148,15,155,30);
+		do Screen.drawRectangle(155,30,240,40);
+		do Screen.drawRectangle(240,35,249,50);
+		do Screen.drawRectangle(125,50,240,60);
+		do Screen.drawCircle(153.5,15,5.5);
+		do Screen.drawCircle(153,34,5.5);
+		do Screen.drawPixel(148,31);
+		do Screen.drawPixel(148,32);
+		do Screen.drawPixel(154,40);
+		do Screen.drawPixel(153,40);
+		do Screen.drawPixel(249,51);
+		do Screen.drawPixel(249,52);
+		do Screen.drawPixel(249,53);
+		do Screen.drawCircle(243,35,5.5);
+		do Screen.drawCircle(243,54,5.5);
+		do Screen.drawPixel(241,60);
+		do Screen.drawPixel(242,60);
+		do Screen.drawPixel(243,60);
+		do Screen.drawPixel(240,41);
+		do Screen.drawPixel(240,42);
+		do Screen.drawPixel(240,43);
+		
+		//T
+		do Screen.drawRectangle(255,15,268,30);
+		do Screen.drawRectangle(255,30,268,60);
+		//A
+		do Screen.drawRectangle(299,10,310,20);
+		do Screen.drawPixel(297,10);
+		do Screen.drawPixel(298,10);
+		do Screen.drawPixel(296,10);
+		do Screen.drawPixel(311,10);
+		do Screen.drawPixel(312,10);
+		do Screen.drawPixel(313,10);
+		do Screen.drawPixel(297,11);
+		do Screen.drawPixel(298,11);
+		do Screen.drawPixel(296,11);
+		do Screen.drawPixel(311,11);
+		do Screen.drawPixel(312,11);
+		do Screen.drawPixel(313,11);
+		do Screen.drawRectangle(290,20,299,60);
+		do Screen.drawRectangle(281,30,290,60);
+		do Screen.drawRectangle(310,20,319,60);
+		do Screen.drawRectangle(319,30,328,60);
+		do Screen.drawRectangle(298,40,310,50);
+		do Screen.drawCircle(313,18,6);
+		do Screen.drawCircle(296,18,6);
+		
+		//R
+		do Screen.drawRectangle(340,10,351,60);	
+		do Screen.drawRectangle(352,10,370,18);
+		do Screen.drawRectangle(370,18,378,30);
+		do Screen.drawRectangle(352,30,370,38);
+		do Screen.drawRectangle(360,38,370,55);
+		do Screen.drawRectangle(360,50,378,60);
+		do Screen.drawCircle(373,15,5);
+		do Screen.drawCircle(373,33,5);
+		do Screen.drawCircle(378,55,5);
+		//W
+		let x = 25;
+		do Screen.drawLine(125+x,80,155+x,130);
+		do Screen.drawLine(126+x,80,156+x,130);
+		do Screen.drawLine(127+x,80,157+x,130);
+		do Screen.drawLine(128+x,80,158+x,130);
+		do Screen.drawLine(129+x,80,159+x,130);
+		do Screen.drawLine(130+x,80,160+x,130);
+		do Screen.drawLine(131+x,80,161+x,130);
+		do Screen.drawLine(132+x,80,162+x,130);
+		do Screen.drawLine(133+x,80,163+x,130);
+		do Screen.drawLine(134+x,80,164+x,130);
+		do Screen.drawLine(135+x,80,165+x,130);
+		do Screen.drawLine(136+x,80,166+x,130);
+		
+		do Screen.drawLine(164+x,130,170+x,116);
+		do Screen.drawLine(165+x,130,171+x,116);
+		do Screen.drawLine(166+x,130,172+x,116);
+		do Screen.drawLine(167+x,130,173+x,116);
+		do Screen.drawLine(168+x,130,174+x,116);
+		do Screen.drawLine(169+x,130,175+x,116);
+		do Screen.drawLine(170+x,130,176+x,116);
+		do Screen.drawLine(171+x,130,177+x,116);
+		do Screen.drawLine(172+x,130,178+x,116);
+		do Screen.drawRectangle(155+x,130,172+x,139);
+		
+		//triangle
+		do Screen.drawRectangle(172+x,113,185+x,114);
+		do Screen.drawRectangle(172+x,114,185+x,120);
+		
+		//right
+		do Screen.drawLine(178+x,116,185+x,130);
+		do Screen.drawLine(179+x,116,186+x,130);
+		do Screen.drawLine(180+x,116,187+x,130);
+		do Screen.drawLine(181+x,116,188+x,130);
+		do Screen.drawLine(182+x,116,189+x,130);
+		do Screen.drawLine(183+x,116,190+x,130);
+		do Screen.drawLine(184+x,116,191+x,130);
+		do Screen.drawLine(185+x,116,192+x,130);
+		do Screen.drawLine(186+x,116,193+x,130);
+		do Screen.drawRectangle(186+x,130,203+x,139);
+		
+	
+		do Screen.drawLine(191+x,130,221+x,80);
+		do Screen.drawLine(192+x,130,222+x,80);
+		do Screen.drawLine(193+x,130,223+x,80);
+		do Screen.drawLine(194+x,130,224+x,80);
+		do Screen.drawLine(195+x,130,225+x,80);
+		do Screen.drawLine(196+x,130,226+x,80);
+		do Screen.drawLine(197+x,130,227+x,80);
+		do Screen.drawLine(198+x,130,228+x,80);
+		do Screen.drawLine(199+x,130,229+x,80);
+		do Screen.drawLine(200+x,130,230+x,80);
+		do Screen.drawLine(201+x,130,231+x,80);
+		do Screen.drawLine(202+x,130,232+x,80);
+		do Screen.drawLine(203+x,130,233+x,80);
+		
+
+		
+		
+		//A
+		let x = 30;
+		do Screen.drawRectangle(299-x,80,310-x,90);
+		do Screen.drawPixel(297-x,80);
+		do Screen.drawPixel(298-x,80);
+		do Screen.drawPixel(296-x,80);
+		do Screen.drawPixel(311-x,80);
+		do Screen.drawPixel(312-x,80);
+		do Screen.drawPixel(313-x,80);
+		do Screen.drawPixel(297-x,81);
+		do Screen.drawPixel(298-x,81);
+		do Screen.drawPixel(296-x,81);
+		do Screen.drawPixel(311-x,81);
+		do Screen.drawPixel(312-x,81);
+		do Screen.drawPixel(313-x,81);
+		do Screen.drawRectangle(290-x,90,299-x,139);
+		do Screen.drawRectangle(281-x,100,290-x,139);
+		do Screen.drawRectangle(310-x,90,319-x,139);
+		do Screen.drawRectangle(319-x,100,328-x,139);
+		do Screen.drawRectangle(298-x,110,310-x,120);
+		do Screen.drawCircle(313-x,88,6);
+		do Screen.drawCircle(296-x,88,6);
+
+		//R
+		do Screen.drawRectangle(340-x,80,351-x,139);	
+		do Screen.drawRectangle(352-x,80,370-x,88);
+		do Screen.drawRectangle(370-x,88,378-x,100);
+		do Screen.drawRectangle(352-x,100,370-x,108);
+		do Screen.drawRectangle(360-x,108,370-x,134);
+		do Screen.drawRectangle(360-x,129,378-x,139);
+		do Screen.drawCircle(373-x,85,5);
+		do Screen.drawCircle(373-x,103,5);
+		do Screen.drawCircle(378-x,134,5);
+		
+		//castle
+		do Screen.drawRectangle(0,115,90,255);
+		do Screen.drawRectangle(0,100,95,115);
+		do Screen.drawRectangle(0,90,99,100);
+		do Screen.drawRectangle(0,80,105,100);
+		//bricks
+		do Screen.drawRectangle(0,70,15,80);
+		do Screen.drawRectangle(30,70,45,80);
+		do Screen.drawRectangle(60,70,75,80);
+		do Screen.drawRectangle(90,70,105,80);
+		
+		
+	//monsters
+		let ax = 436;
+		let ay = 96;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+		
+		let ax = 440;
+		let ay = 50;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+		let ax = 378;
+		let ay = 165;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  	let ax = 335;
+		let ay = 195;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  	let ax = 410;
+		let ay = 118;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  	let ax = 355;
+		let ay = 235;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	    let ax = 99;
+		let ay = 238;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  
+	    let ax = 150;
+		let ay = 190;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  
+	    let ax = 267;
+		let ay = 160;
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  
+	  
+	  //monster 2
+	  
+	  
+	  		let ax = 110;
+			let ay = 208;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+
+	    	let ax = 330;
+			let ay = 168;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+			let ax = 200;
+			let ay = 178;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+	  
+	  
+	  		let ax = 397;
+			let ay = 90;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+	  
+	  
+	  		let ax = 442;
+			let ay = 165;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+	  
+	  		let ax = 415;
+			let ay = 200;
+	   do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+		do Output.moveCursor(19,24);
+		do Output.printString("PRESS S TO START");
+		
+		while(key=0)
+		{
+			let key=Keyboard.keyPressed();
+		}
+		
+		if(key=83)
+		{
+			do Screen.clearScreen();
+			let NewGame = StarWarGame.new();
+			do NewGame.run();
+			let level = 1;
+		}
+				
+		if (level = 1)
+		{
+			do Screen.clearScreen();
+		  	do Output.moveCursor(15,15);
+			do Screen.setColor(true);
+			do Output.printString("Level 2!");
+			do Sys.wait(1000);
+			do Screen.clearScreen();
+			let level2 = 1;
+			
+		}
+
+		if (level2 = 1)
+		{
+			let Game = StarGame.new();
+			do Game.run();
+
+		}
+
+		do NewGame.dispose();
+        return;
+    }
+	}

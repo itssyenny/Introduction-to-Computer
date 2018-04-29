@@ -1,0 +1,480 @@
+class Aeroplane {
+   field int x, y;
+   field int size;
+   field Array initialY;
+   field int a;
+   field int score;
+   constructor Aeroplane new(int Ax, int Ay, int Asize) {
+   	  let score = 0;
+      let x = Ax;
+      let y = Ay;
+      let size = Asize;
+	  let initialY = Array.new(10);
+      do drawAeroplane(Ax,Ay);
+      do drawCastle();
+	  do drawScoreboard();
+      return this;
+   }
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void drawCastle() {
+		var int i;
+		let i = 0;
+		while(i < 190){
+			do Screen.setColor(true);
+			do Screen.drawRectangle(0, 0 + i, 48, 16 + i);
+			do Screen.drawRectangle(0, 16 + i, 28, 31 + i);
+			let i = i + 32 ;
+		}
+		do Screen.setColor(true);
+		do Screen.drawRectangle(0, 0 + i, 48, 16 + i);
+		return;
+	}
+	
+	method void drawScoreboard() {
+		do Screen.setColor(true);
+		do Screen.drawRectangle(0, 210, 511, 213);
+		do Output.moveCursor(21,0);
+		do Output.printString("HP : ");
+		do Screen.setColor(true);
+		do Output.moveCursor(21,50);
+		do Output.printString("Score : ");
+
+		return;
+	}
+	
+	method void drawHP(int hp) {
+		do erase(40,225,390,250);
+		do Screen.setColor(true);
+		do Screen.drawRectangle(40, 225, hp + 40, 250);
+		return;
+	}
+
+	method void drawScore(int score){
+		do Output.moveCursor(21,59);
+		do Output.printInt(score);
+		
+		return;
+	}
+   
+   method void drawAeroplane(int ax, int ay) {
+	  var int i;
+	  let i = 0;
+	  while(i < 15){
+	    do Screen.setColor(true);
+		do Screen.drawLine(ax + 13, ay + i, ax + 13 + i, ay + i);
+		let i = i + 1;
+	  }
+	  let i = 0;
+	  while(i < 15){
+	    do Screen.setColor(true);
+		do Screen.drawLine(ax + 13, ay + 14 + i, ax + 13 + 14 - i, ay + 14 + i);
+		let i = i + 1;
+	  }
+	  do Screen.drawRectangle(ax + 22, ay + 9, ax + 30, ay + 20);
+	  do Screen.drawRectangle(ax + 5, ay + 3, ax + 13, ay + 9);
+	  do Screen.drawRectangle(ax + 5, ay + 19, ax + 13, ay + 25);
+	  
+	  let i = 0;
+	  while(i < 7){
+	    do Screen.setColor(true);
+		do Screen.drawLine(ax + 30, ay+9+i, ax + 30 + i, ay+9+i);
+		let i = i + 1;
+	  }
+	  let i = 0;
+	  while(i < 6){
+	    do Screen.setColor(true);
+		do Screen.drawLine(ax + 30, ay+15+i, ax + 30 + 6 - i, ay + 15+ i);
+		let i = i + 1;
+	  }
+      return;
+   }
+   method void drawMonster1(int ax, int ay) {
+	  do erase(ax,ay,ax+18,ay+18);
+	  do Screen.setColor(true);
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+6,ay+0,ax+10,ay+2);
+	  do Screen.drawRectangle(ax+4,ay+2,ax+12,ay+4);
+	  do Screen.drawRectangle(ax+2,ay+4,ax+14,ay+6);
+	  do Screen.drawRectangle(ax,ay+6,ax+4,ay+8);
+	  do Screen.drawRectangle(ax+6,ay+6,ax+10,ay+8);
+	  do Screen.drawRectangle(ax+12,ay+6,ax+16,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+16,ay+10);
+	  do Screen.drawRectangle(ax+2,ay+10,ax+4,ay+12);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax,ay+12,ax+2,ay+14);
+	  do Screen.drawRectangle(ax+14,ay+12,ax+16,ay+14);
+	  do Screen.drawRectangle(ax+2,ay+14,ax+4,ay+16);
+	  do Screen.drawRectangle(ax+12,ay+14,ax+14,ay+16);
+	  //do Sys.wait(5);
+      return;
+   }
+   method void drawMonster2(int ax, int ay) { //25*17大小
+	  do erase(ax,ay,ax+25,ay+17);
+	  do Screen.setColor(true);
+      do Screen.drawPixel(ax+3,ay);
+	  do Screen.drawRectangle(ax+8,ay+0,ax+16,ay+2);
+	  do Screen.drawRectangle(ax+2,ay+2,ax+22,ay+4);
+	  do Screen.drawRectangle(ax+0,ay+4,ax+24,ay+6);
+	  do Screen.drawRectangle(ax+0,ay+6,ax+6,ay+8);
+	  do Screen.drawRectangle(ax+10,ay+6,ax+14,ay+8);
+	  do Screen.drawRectangle(ax+18,ay+6,ax+24,ay+8);
+	  do Screen.drawRectangle(ax,ay+8,ax+24,ay+10);
+	  do Screen.drawRectangle(ax+6,ay+10,ax+10,ay+12);
+	  do Screen.drawRectangle(ax+14,ay+10,ax+18,ay+12);
+	  do Screen.drawRectangle(ax+12,ay+10,ax+14,ay+12);
+	  do Screen.drawRectangle(ax+4,ay+12,ax+8,ay+14);
+	  do Screen.drawRectangle(ax+10,ay+12,ax+14,ay+14);
+	  do Screen.drawRectangle(ax+16,ay+12,ax+20,ay+14);
+	  do Screen.drawRectangle(ax+0,ay+14,ax+6,ay+16);
+	  do Screen.drawRectangle(ax+20,ay+14,ax+24,ay+16);
+	  //do Sys.wait(5);
+      return;
+   }
+   method void drawExplosion(int ax, int ay) { //25*17大小
+	  do Screen.setColor(true);
+	  do Screen.drawRectangle(ax+10,ay+0,ax+13,ay+3);
+		do Screen.drawRectangle(ax+16,ay+2,ax+18,ay+3);
+		do Screen.drawRectangle(ax+2,ay+2,ax+3,ay+5);
+		do Screen.drawRectangle(ax+8,ay+3,ax+10,ay+4);
+		do Screen.drawRectangle(ax+6,ay+4,ax+11,ay+5);
+		do Screen.drawRectangle(ax+4,ay+5,ax+7,ay+6);
+		do Screen.drawRectangle(ax+11,ay+5,ax+13,ay+6);
+		do Screen.drawRectangle(ax+1,ay+6,ax+5,ay+7);
+		do Screen.drawRectangle(ax+13,ay+6,ax+15,ay+7);
+		do Screen.drawRectangle(ax+1,ay+7,ax+3,ay+8);
+		do Screen.drawRectangle(ax+7,ay+7,ax+8,ay+8);
+		do Screen.drawRectangle(ax+11,ay+7,ax+12,ay+8);
+		do Screen.drawRectangle(ax+15,ay+7,ax+17,ay+8);
+		do Screen.drawRectangle(ax+0,ay+8,ax+1,ay+9);
+		do Screen.drawRectangle(ax+17,ay+8,ax+18,ay+9);
+		do Screen.drawRectangle(ax+0,ay+9,ax+2,ay+10);
+		do Screen.drawRectangle(ax+6,ay+9,ax+7,ay+10);
+		do Screen.drawRectangle(ax+14,ay+9,ax+15,ay+10);
+		do Screen.drawRectangle(ax+17,ay+9,ax+18,ay+10);
+		do Screen.drawRectangle(ax+1,ay+10,ax+3,ay+11);
+		do Screen.drawRectangle(ax+7,ay+10,ax+9,ay+11);
+		do Screen.drawRectangle(ax+11,ay+10,ax+12,ay+11);
+		do Screen.drawRectangle(ax+14,ay+10,ax+15,ay+11);
+		do Screen.drawRectangle(ax+16,ay+10,ax+18,ay+11);
+		do Screen.drawRectangle(ax+2,ay+11,ax+4,ay+12);
+		do Screen.drawRectangle(ax+10,ay+11,ax+13,ay+12);
+		do Screen.drawRectangle(ax+16,ay+11,ax+17,ay+12);
+		do Screen.drawRectangle(ax+3,ay+12,ax+5,ay+13);
+		do Screen.drawRectangle(ax+6,ay+12,ax+8,ay+13);
+		do Screen.drawRectangle(ax+10,ay+12,ax+11,ay+13);
+		do Screen.drawRectangle(ax+13,ay+12,ax+16,ay+14);
+		do Screen.drawRectangle(ax+4,ay+13,ax+5,ay+14);
+		do Screen.drawRectangle(ax+4,ay+14,ax+7,ay+15);
+		do Screen.drawRectangle(ax+9,ay+14,ax+10,ay+15);
+		do Screen.drawRectangle(ax+13,ay+14,ax+14,ay+15);
+		do Screen.drawRectangle(ax+1,ay+15,ax+3,ay+17);
+		do Screen.drawRectangle(ax+6,ay+15,ax+11,ay+16);
+		do Screen.drawRectangle(ax+12,ay+15,ax+14,ay+16);
+		do Screen.drawRectangle(ax+10,ay+16,ax+13,ay+17);
+		do Screen.drawRectangle(ax+11,ay+17,ax+12,ay+18);
+		do Screen.drawRectangle(ax+14,ay+16,ax+17,ay+18);
+      return;
+   }
+   
+	
+   method void GameOver() {
+		//Game Over
+		//G
+	  do Screen.setColor(true);
+		do Screen.drawRectangle(135,15,205,30);
+		do Screen.drawRectangle(115,15,135,70);
+		do Screen.drawRectangle(115,70,205,85);
+		do Screen.drawRectangle(185,55,205,70);
+		do Screen.drawRectangle(160,35,205,55);
+		  
+		//A
+		let x = 60;
+		let y = 65;
+		do Screen.drawRectangle(299-x,80-y,310-x,90-y);
+		do Screen.drawPixel(297-x,80-y);
+		do Screen.drawPixel(298-x,80-y);
+		do Screen.drawPixel(296-x,80-y);
+		do Screen.drawPixel(311-x,80-y);
+		do Screen.drawPixel(312-x,80-y);
+		do Screen.drawPixel(313-x,80-y);
+		do Screen.drawPixel(297-x,81-y);
+		do Screen.drawPixel(298-x,81-y);
+		do Screen.drawPixel(296-x,81-y);
+		do Screen.drawPixel(311-x,81-y);
+		do Screen.drawPixel(312-x,81-y);
+		do Screen.drawPixel(313-x,81-y);
+		do Screen.drawRectangle(290-x,90-y,299-x,85);
+		do Screen.drawRectangle(281-x,100-y,290-x,85);
+		do Screen.drawRectangle(310-x,90-y,319-x,85);
+		do Screen.drawRectangle(319-x,100-y,328-x,85);
+		do Screen.drawRectangle(298-x,110-y,310-x,120-y);
+		do Screen.drawCircle(313-x,88-y,6);
+		do Screen.drawCircle(296-x,88-y,6);
+		
+		//M
+		do Screen.drawRectangle(282,15,302,85);
+		do Screen.drawLine(302,15,312,50);
+		do Screen.drawLine(302,16,312,51);
+		do Screen.drawLine(302,17,312,52);
+		do Screen.drawLine(302,18,312,53);
+		do Screen.drawLine(302,19,312,54);
+		do Screen.drawLine(302,20,312,55);
+		do Screen.drawLine(302,21,312,56);
+		do Screen.drawLine(302,22,312,57);
+		do Screen.drawLine(302,23,312,58);
+		do Screen.drawLine(302,24,312,59);
+		do Screen.drawLine(302,25,312,60);
+		do Screen.drawLine(312,50,322,15);
+		do Screen.drawLine(312,50,322,15);
+		do Screen.drawLine(312,50,322,15);
+		
+		do Screen.drawLine(312,50,322,15);
+		do Screen.drawLine(312,51,322,16);
+		do Screen.drawLine(312,52,322,17);
+		do Screen.drawLine(312,53,322,18);
+		do Screen.drawLine(312,54,322,19);
+		do Screen.drawLine(312,55,322,20);
+		do Screen.drawLine(312,56,322,21);
+		do Screen.drawLine(312,57,322,22);
+		do Screen.drawLine(312,58,322,23);
+		do Screen.drawLine(312,59,322,24);
+		do Screen.drawLine(312,60,322,25);
+		do Screen.drawRectangle(322,15,342,85);
+		
+		//E
+		do Screen.drawRectangle(356,15,376,85);
+		do Screen.drawRectangle(356,15,395,30);
+		do Screen.drawRectangle(356,42,395,57);
+		do Screen.drawRectangle(356,70,395,85);
+		
+		//O
+		do Screen.drawCircle(160,155,45);
+		do Screen.setColor(false);
+		do Screen.drawCircle(160,155,35);
+		do Screen.setColor(true);
+		
+		//V
+		let a = 30;
+		do Screen.drawLine(221,110,236,200-a);
+		do Screen.drawLine(221,110,236,201-a);
+		do Screen.drawLine(221,110,236,202-a);
+		do Screen.drawLine(221,110,236,203-a);
+		do Screen.drawLine(221,110,236,204-a);
+		do Screen.drawLine(221,110,236,205-a);
+		do Screen.drawLine(221,110,236,206-a);
+		do Screen.drawLine(221,110,236,207-a);
+		do Screen.drawLine(221,110,236,208-a);
+		do Screen.drawLine(221,110,236,209-a);
+		do Screen.drawLine(221,110,236,210-a);
+		do Screen.drawLine(221,110,236,211-a);
+		do Screen.drawLine(221,110,236,212-a);
+		do Screen.drawLine(221,110,236,213-a);
+		do Screen.drawLine(221,110,236,214-a);
+		do Screen.drawLine(221,110,236,215-a);
+		do Screen.drawLine(221,110,236,216-a);
+		do Screen.drawLine(221,110,236,217-a);
+		do Screen.drawLine(221,110,236,218-a);
+		do Screen.drawLine(221,110,236,219-a);
+		do Screen.drawLine(221,110,236,220-a);
+		do Screen.drawLine(221,110,236,221-a);
+		do Screen.drawLine(221,110,236,222-a);
+		do Screen.drawLine(221,110,236,223-a);
+		do Screen.drawLine(221,110,236,224-a);
+		do Screen.drawLine(221,110,236,225-a);
+		do Screen.drawLine(221,110,236,226-a);
+		do Screen.drawLine(221,110,236,227-a);
+		do Screen.drawLine(221,110,236,228-a);
+		do Screen.drawLine(221,110,236,229-a);
+		do Screen.drawLine(221,110,236,230-a);
+		do Screen.drawLine(221,110,236,231-a);
+		do Screen.drawLine(221,110,236,232-a);
+		do Screen.drawLine(221,110,236,233-a);
+		do Screen.drawLine(221,110,236,234-a);
+		do Screen.drawLine(221,110,236,235-a);
+		do Screen.drawLine(221,110,236,236-a);
+		do Screen.drawLine(221,110,236,237-a);
+		do Screen.drawLine(221,110,236,238-a);
+		
+		do Screen.drawLine(236,200-a,251,110);
+		do Screen.drawLine(236,201-a,251,110);
+		do Screen.drawLine(236,202-a,251,110);
+		do Screen.drawLine(236,203-a,251,110);
+		do Screen.drawLine(236,204-a,251,110);
+		do Screen.drawLine(236,205-a,251,110);
+		do Screen.drawLine(236,206-a,251,110);
+		do Screen.drawLine(236,207-a,251,110);
+		do Screen.drawLine(236,208-a,251,110);
+		do Screen.drawLine(236,209-a,251,110);
+		do Screen.drawLine(236,210-a,251,110);
+		do Screen.drawLine(236,211-a,251,110);
+		do Screen.drawLine(236,212-a,251,110);
+		do Screen.drawLine(236,213-a,251,110);
+		do Screen.drawLine(236,214-a,251,110);
+		do Screen.drawLine(236,215-a,251,110);
+		do Screen.drawLine(236,216-a,251,110);
+		do Screen.drawLine(236,217-a,251,110);
+		do Screen.drawLine(236,218-a,251,110);
+		do Screen.drawLine(236,219-a,251,110);
+		do Screen.drawLine(236,220-a,251,110);
+		do Screen.drawLine(236,221-a,251,110);
+		do Screen.drawLine(236,222-a,251,110);
+		do Screen.drawLine(236,223-a,251,110);
+		do Screen.drawLine(236,224-a,251,110);
+		do Screen.drawLine(236,225-a,251,110);
+		do Screen.drawLine(236,226-a,251,110);
+		do Screen.drawLine(236,227-a,251,110);
+		do Screen.drawLine(236,228-a,251,110);
+		do Screen.drawLine(236,229-a,251,110);
+		do Screen.drawLine(236,230-a,251,110);
+		do Screen.drawLine(236,231-a,251,110);
+		do Screen.drawLine(236,232-a,251,110);
+		do Screen.drawLine(236,233-a,251,110);
+		do Screen.drawLine(236,234-a,251,110);
+		do Screen.drawLine(236,235-a,251,110);
+		do Screen.drawLine(236,236-a,251,110);
+		do Screen.drawLine(236,237-a,251,110);
+		do Screen.drawLine(236,238-a,251,110);
+		do Screen.drawLine(236,239-a,251,110);
+		do Screen.drawLine(236,240-a,251,110);
+		do Screen.drawLine(236,241-a,251,110);
+		do Screen.drawLine(236,242-a,251,110);
+		do Screen.drawLine(236,243-a,251,110);
+		
+		//E
+		do Screen.drawLine(265,110,265,200);
+		do Screen.drawLine(266,110,265,200);
+		do Screen.drawLine(267,110,265,200);
+		do Screen.drawLine(268,110,265,200);
+		do Screen.drawLine(269,110,265,200);
+		do Screen.drawLine(270,110,265,200);
+		do Screen.drawLine(271,110,265,200);
+		do Screen.drawLine(272,110,265,200);
+		do Screen.drawLine(273,110,265,200);
+		do Screen.drawLine(274,110,265,200);
+		do Screen.drawLine(275,110,265,200);
+		do Screen.drawLine(276,110,265,200);
+		do Screen.drawLine(277,110,265,200);
+		do Screen.drawLine(278,110,265,200);
+		do Screen.drawLine(279,110,265,200);
+		do Screen.drawLine(280,110,265,200);
+		
+		do Screen.drawLine(265,110,320,110);
+		do Screen.drawLine(265,111,320,111);
+		do Screen.drawLine(265,112,320,112);
+		do Screen.drawLine(265,113,320,113);
+		do Screen.drawLine(265,114,320,114);
+		do Screen.drawLine(265,115,320,115);
+		
+		do Screen.drawLine(265,147,320,147);
+		do Screen.drawLine(265,148,320,148);
+		do Screen.drawLine(265,149,320,149);
+		do Screen.drawLine(265,150,320,150);
+		do Screen.drawLine(265,151,320,151);
+		do Screen.drawLine(265,152,320,152);
+		do Screen.drawLine(265,153,320,153);
+		
+		do Screen.drawLine(265,200,320,200);
+		do Screen.drawLine(265,201,320,201);
+		do Screen.drawLine(265,202,320,202);
+		do Screen.drawLine(265,203,320,203);
+		do Screen.drawLine(265,204,320,204);
+		do Screen.drawLine(265,205,320,205);
+		do Screen.drawLine(265,206,320,206);
+		do Screen.drawLine(265,207,320,207);
+		
+		//R
+		do Screen.drawLine(337,110,337,200);
+		do Screen.drawLine(338,110,338,200);
+		do Screen.drawLine(339,110,339,200);
+		do Screen.drawLine(340,110,340,200);
+		do Screen.drawLine(341,110,341,200);
+		do Screen.drawLine(342,110,342,200);
+		do Screen.drawLine(343,110,343,200);
+		
+		do Screen.drawLine(337,110,392,110);
+		do Screen.drawLine(337,110,392,111);
+		do Screen.drawLine(337,110,392,112);
+		do Screen.drawLine(337,110,392,113);
+		do Screen.drawLine(337,110,392,114);
+		do Screen.drawLine(337,110,392,115);
+		do Screen.drawLine(337,110,392,116);
+		do Screen.drawLine(337,110,392,117);
+		do Screen.drawLine(337,110,392,118);
+		
+		do Screen.drawLine(392,118,392,145);
+		do Screen.drawLine(391,118,392,145);
+		do Screen.drawLine(390,118,392,145);
+		do Screen.drawLine(389,118,392,145);
+		do Screen.drawLine(388,118,392,145);
+		do Screen.drawLine(387,118,392,145);
+		do Screen.drawLine(386,118,392,145);
+		do Screen.drawLine(385,118,392,145);
+		do Screen.drawLine(384,118,392,145);
+		
+		let y = 35;
+		do Screen.drawLine(337,110+y,392,110+y);
+		do Screen.drawLine(337,110+y,392,111+y);
+		do Screen.drawLine(337,110+y,392,112+y);
+		do Screen.drawLine(337,110+y,392,113+y);
+		do Screen.drawLine(337,110+y,392,114+y);
+		do Screen.drawLine(337,110+y,392,115+y);
+		do Screen.drawLine(337,110+y,392,116+y);
+		do Screen.drawLine(337,110+y,392,117+y);
+		do Screen.drawLine(337,110+y,392,118+y);
+		
+		do Screen.drawLine(337,137,392,200);
+		do Screen.drawLine(337,138,392,201);
+		do Screen.drawLine(337,139,392,202);
+		do Screen.drawLine(337,140,392,203);
+		do Screen.drawLine(337,141,392,204);
+		do Screen.drawLine(337,142,392,205);
+		do Screen.drawLine(337,143,392,206);
+		
+		return;
+   }
+   method void erase(int ax,int ay,int bx,int by) {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(ax, ay, bx, by);
+      return;
+   }
+   
+   method void drawBullet(int ax, int ay, int bx, int by) {
+      do erase(ax-5, ay, bx, by);
+	  do Screen.setColor(true);
+      do Screen.drawRectangle(ax, ay, bx, by);
+      return;
+   }
+   
+   method void shoot(int bulletPosX, int bulletPosY) {
+	  var int bulletsize;
+	  let bulletsize = 10;
+      do drawBullet(x + size + bulletPosX, bulletPosY + (size/2) - 5, x + size + bulletsize + bulletPosX, (bulletPosY+ (size/2) - 2));
+      return;
+   }
+   
+   method void moveUp() {
+      if (y > 1) {
+		 do erase(x, y, x + size, y + 30);
+         let y = y - 2;
+         do drawAeroplane(x, y);
+      }
+      return;
+   }
+
+   method void moveDown() {
+      if ((y + size) < 214) {
+		 do erase(x, y, x + size, y + 30);
+         let y = y + 2;
+         do drawAeroplane(x, y);
+      }
+      return;
+   }
+   method int sendY(){
+	return y;
+   }
+}

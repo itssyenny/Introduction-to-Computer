@@ -1,0 +1,300 @@
+class StarGame {
+   field Aeroplane aeroplane;
+   field int direction;
+   field int score;
+   field int time;
+   field int hp;
+   field Array gotBullet;
+   field Array bulletPosX;
+   field Array bulletPosY;
+   field int monster1Alive;
+   field int monster1PosX;
+   field int monster1PosY;
+   field int eraseMonster1Explosion;
+   field int monster2Alive;
+   field int monster2PosX;
+   field int monster2PosY;
+   field int eraseMonster2Explosion;
+   field int monster3Alive;
+   field int monster3PosX;
+   field int monster3PosY;
+   field int eraseMonster3Explosion;
+   field int monster4Alive;
+   field int monster4PosX;
+   field int monster4PosY;
+   field int eraseMonster4Explosion;
+   field int i;
+   constructor StarGame new() {
+      let aeroplane = Aeroplane.new(70, 128, 36);
+      let direction = 0;  // initial state is no movement
+	  let score = 1000;
+	  let time = 0;
+	  let hp = 350;
+	  let monster1Alive = 0;
+	  let monster1PosX = 480;
+	  let monster2Alive = 0;
+	  let monster2PosX = 480;
+	  let monster3Alive = 0;
+	  let monster3PosX = 480;
+	  let monster4Alive = 0;
+	  let monster4PosX = 480;
+	  
+	  let gotBullet = Array.new(30);
+	  let bulletPosX = Array.new(30);
+	  let bulletPosY = Array.new(30);
+	  let i = 0;
+	  while(i<30){
+		let gotBullet[i] = 0;
+		let bulletPosX[i] = 0;
+		let bulletPosY[i] = 0;
+		let i = i + 1;
+	  }
+	  
+	  do aeroplane.drawHP(hp);
+	  do aeroplane.drawScore(score);
+      return this;
+
+   }
+   
+   method void dispose() {
+      do aeroplane.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+   
+   method void MoveAeroplane() {
+      if (direction = 1) { do aeroplane.moveUp(); }
+      if (direction = 2) { do aeroplane.moveDown(); }
+      return;
+   }
+   method int mod(int a, int b){
+	  while(a>b){
+		let a = a - b;
+	  }
+	  return a;
+   }
+   
+   method void run() {
+      var char key;
+      var boolean exit;
+	  var int random;
+      let exit = false;
+	  let random = 0;
+	  while (~exit) {
+         let key = Keyboard.keyPressed();
+		 let random = random + 1;
+		 if(key=32){
+			let exit = true;
+		 }
+	  }
+	  let exit = false; 
+      while (~exit) {
+         let key = Keyboard.keyPressed();
+         if (key = 81)  { let exit = true; }     // q key
+		 if (key = 32)  { 
+			let i = 0;
+			while(i<30){
+				if(gotBullet[i] = 0){
+					let gotBullet[i] = 1;
+					let bulletPosY[i] = aeroplane.sendY();
+					let i = 30;
+				}
+				let i = i + 1;
+			}
+			let random = random + 1;
+		 }
+         if (key = 131) { let direction = 1; }   // up arrow
+         if (key = 133) { let direction = 2; }   // down arrow
+		 let i = 0;
+		 let random = mod(random,80);
+		 while(i<30){
+			 if(gotBullet[i] = 1){
+				do aeroplane.shoot(bulletPosX[i],bulletPosY[i]);
+				let bulletPosX[i] = bulletPosX[i] + 5;
+				if(bulletPosX[i] > 396){
+					do aeroplane.erase(495,0,511,209);
+					let bulletPosX[i] = 0;
+					let gotBullet[i] = 0;
+				}
+				if(bulletPosX[i] + 116 = monster1PosX){
+					if( (bulletPosY[i] + (36/2) - 5) > monster1PosY){
+						if( (bulletPosY[i] + (36/2) - 2) < (monster1PosY + 18)){
+							do aeroplane.erase(monster1PosX,monster1PosY,monster1PosX+18,monster1PosY+18);
+							do aeroplane.drawExplosion(monster1PosX,monster1PosY);
+							let eraseMonster1Explosion = 1;
+							let monster1Alive = 0;
+							let score = score + 100;
+							do aeroplane.drawScore(score);
+						}
+					}
+				}
+				if(bulletPosX[i] + 116 = monster2PosX){
+					if( (bulletPosY[i] + (36/2) - 5) > monster2PosY){
+						if( (bulletPosY[i] + (36/2) - 2) < (monster2PosY + 17)){
+							do aeroplane.erase(monster2PosX,monster2PosY,monster2PosX+25,monster2PosY+17);
+							do aeroplane.drawExplosion(monster2PosX,monster2PosY);
+							let eraseMonster2Explosion = 1;
+							let monster2Alive = 0;
+							let score = score + 100;
+							do aeroplane.drawScore(score);
+
+						}
+					}
+				}
+				if(bulletPosX[i] + 116 = monster3PosX){
+					if( (bulletPosY[i] + (36/2) - 5) > monster3PosY){
+						if( (bulletPosY[i] + (36/2) - 2) < (monster3PosY + 18)){
+							do aeroplane.erase(monster3PosX,monster3PosY,monster3PosX+18,monster3PosY+18);
+							do aeroplane.drawExplosion(monster3PosX,monster3PosY);
+							let eraseMonster3Explosion = 1;
+							let monster3Alive = 0;
+							let score = score + 100;
+							do aeroplane.drawScore(score);
+
+						}
+					}
+				}
+				if(bulletPosX[i] + 116 = monster4PosX){
+					if( (bulletPosY[i] + (36/2) - 5) > monster4PosY){
+						if( (bulletPosY[i] + (36/2) - 2) < (monster4PosY + 17)){
+							do aeroplane.erase(monster4PosX,monster4PosY,monster4PosX+25,monster4PosY+17);
+							do aeroplane.drawExplosion(monster4PosX,monster4PosY);
+							let eraseMonster4Explosion = 1;
+							let monster4Alive = 0;
+							let score = score + 100;
+							do aeroplane.drawScore(score);
+
+						}
+					}
+				}
+			 }
+			let i = i + 1;
+		 }
+
+		if(time = 10){
+			let monster1Alive = 1;
+			let monster1PosY = random;
+		}
+		if(monster1Alive = 1){
+			do aeroplane.drawMonster1(monster1PosX,monster1PosY);
+			let monster1PosX = monster1PosX - 1;
+			if(monster1PosX = 49){
+				let hp = hp - 40;
+				if(hp < 0) {
+					do aeroplane.GameOver();
+					let hp = 0;
+					let exit = true;
+				}
+				do aeroplane.drawHP(hp);
+				do aeroplane.erase(monster1PosX,monster1PosY,monster1PosX+18,monster1PosY+18);
+				do aeroplane.drawExplosion(monster1PosX,monster1PosY);
+				let eraseMonster1Explosion = 1;
+				let monster1Alive = 0;
+			}
+		}
+		if(eraseMonster1Explosion > 0){
+			let eraseMonster1Explosion = eraseMonster1Explosion + 1;
+			if(eraseMonster1Explosion = 10){
+				do aeroplane.erase(monster1PosX,monster1PosY,monster1PosX+19,monster1PosY+19);
+				let monster1PosX = 480;
+				let eraseMonster1Explosion = 0;
+			}
+		}
+		
+		if(time = 110){
+			let monster2Alive = 1;
+			let monster2PosY = random + random;
+		}
+		if(monster2Alive = 1){
+			do aeroplane.drawMonster2(monster2PosX,monster2PosY);
+			let monster2PosX = monster2PosX - 1;
+			if(monster2PosX = 49){
+				let hp = hp - 80;
+				if(hp < 0) {
+					do aeroplane.GameOver();
+					let hp = 0;
+					let exit = true;
+				}
+				do aeroplane.drawHP(hp);
+				do aeroplane.erase(monster2PosX,monster2PosY,monster2PosX+25,monster2PosY+17);
+				do aeroplane.drawExplosion(monster2PosX,monster2PosY);
+				let eraseMonster2Explosion = 1;
+				let monster2Alive = 0;
+			}
+		}
+		if(eraseMonster2Explosion > 0){
+			let eraseMonster2Explosion = eraseMonster2Explosion + 1;
+			if(eraseMonster2Explosion = 10){
+				do aeroplane.erase(monster2PosX,monster2PosY,monster2PosX+19,monster2PosY+19);
+				let monster2PosX = 480;
+				let eraseMonster2Explosion = 0;
+			}
+		}
+		if(time = 210){
+			let monster3Alive = 1;
+			let monster3PosY = random;
+		}
+		if(monster3Alive = 1){
+			do aeroplane.drawMonster1(monster3PosX,monster3PosY);
+			let monster3PosX = monster3PosX - 1;
+			if(monster3PosX = 49){
+				let hp = hp - 40;
+				if(hp < 0) {
+					do aeroplane.GameOver();
+					let hp = 0;
+					let exit = true;
+				}
+				do aeroplane.drawHP(hp);
+				do aeroplane.erase(monster3PosX,monster3PosY,monster3PosX+18,monster3PosY+18);
+				do aeroplane.drawExplosion(monster3PosX,monster3PosY);
+				let eraseMonster3Explosion = 1;
+				let monster3Alive = 0;
+			}
+		}
+		if(eraseMonster3Explosion > 0){
+			let eraseMonster3Explosion = eraseMonster3Explosion + 1;
+			if(eraseMonster3Explosion = 10){
+				do aeroplane.erase(monster3PosX,monster3PosY,monster3PosX+19,monster3PosY+19);
+				let monster3PosX = 480;
+				let eraseMonster3Explosion = 0;
+			}
+		}
+		if(time = 310){
+			let monster4Alive = 1;
+			let monster4PosY = random + random;
+		}
+		if(monster4Alive = 1){
+			do aeroplane.drawMonster2(monster4PosX,monster4PosY);
+			let monster4PosX = monster4PosX - 1;
+			if(monster4PosX = 49){
+				let hp = hp - 80;
+				if(hp < 0) {
+					do aeroplane.GameOver();
+					let hp = 0;
+					let exit = true;
+				}
+				do aeroplane.drawHP(hp);
+				do aeroplane.erase(monster4PosX,monster4PosY,monster4PosX+25,monster4PosY+17);
+				do aeroplane.drawExplosion(monster4PosX,monster4PosY);
+				let eraseMonster4Explosion = 1;
+				let monster4Alive = 0;
+			}
+		}
+		if(eraseMonster4Explosion > 0){
+			let eraseMonster4Explosion = eraseMonster4Explosion + 1;
+			if(eraseMonster4Explosion = 10){
+				do aeroplane.erase(monster4PosX,monster4PosY,monster4PosX+19,monster4PosY+19);
+				let monster4PosX = 480;
+				let eraseMonster4Explosion = 0;
+			}
+		}
+		
+		if(key=133){do MoveAeroplane();}
+		if(key=131){do MoveAeroplane();}
+		do Sys.wait(10);
+		let time = time + 1;
+		let time = mod(time,500);
+     }
+     return;
+   }
+}
