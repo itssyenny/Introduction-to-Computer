@@ -1,0 +1,2 @@
+# Introduction-to-Computer
+This course is about how computer works. We will closely follow the book, The Elements of Computing Systems, which teachs you how to build a modern computer from first principles. Along the way, you will learn the basic principles about switching devices, combinational logic, sequential logic, computer architecture, machine language, assembly language, virtual machine, compiler, high-level language and operating system.
